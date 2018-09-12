@@ -1,0 +1,11 @@
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\bin\Debug\netcoreapp2.0\TUI.deps.json
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\bin\Debug\netcoreapp2.0\TUI.runtimeconfig.json
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\bin\Debug\netcoreapp2.0\TUI.runtimeconfig.dev.json
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\bin\Debug\netcoreapp2.0\TUI.dll
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\bin\Debug\netcoreapp2.0\TUI.pdb
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\obj\Debug\netcoreapp2.0\TUI.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\obj\Debug\netcoreapp2.0\TUI.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\obj\Debug\netcoreapp2.0\TUI.AssemblyInfoInputs.cache
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\obj\Debug\netcoreapp2.0\TUI.AssemblyInfo.cs
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\obj\Debug\netcoreapp2.0\TUI.dll
+C:\Users\user\Documents\Visual Studio 2017\Projects\PVW-Tool\ConsoleApp1\obj\Debug\netcoreapp2.0\TUI.pdb
