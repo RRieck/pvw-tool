@@ -1,0 +1,12 @@
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.csprojAssemblyReference.cache
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI.g.cs
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp_MarkupCompile.cache
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp_MarkupCompile.lref
+Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\StartUp.exe.config
+Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\StartUp.exe
+Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\StartUp.pdb
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI.baml
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.g.resources
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.csproj.CoreCompileInputs.cache
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.exe
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.pdb
