@@ -26,12 +26,11 @@ namespace StartUp.Datenhaltung
             CheckIfFileExists(_path + _fileName);
         }
 
-        public List<Model.Employee> ReadFile()
+        public List<Model.Employee> GetEmployees()
         {
             var xdoc = GetXDocStream();
 
-            var test = xdoc.Descendants("Personen")
-                      .Descendants("Person")
+            return xdoc.Descendants("Person")
                       .Select(item => new Employee()
                       {
                           Id = item.Attribute("ID").Value,
@@ -39,8 +38,6 @@ namespace StartUp.Datenhaltung
                           Abteilung = item.Descendants("Abteilung").First().Value
                       })
                       .ToList();
-
-            return test;
         }
 
         public void WriteNewEntry(Employee employee)
@@ -91,13 +88,7 @@ namespace StartUp.Datenhaltung
 
         XDocument GetXDocStream()
         {
-            try{
                return XDocument.Load(_path + _fileName);
-            }
-            catch (Exception e){
-                Debug.WriteLine(e.Message);
-                throw;
-            }
         }
         
         string AddRootElement()
@@ -116,6 +107,7 @@ namespace StartUp.Datenhaltung
 
         bool CheckIfEntryExists(string id)
         {
+            //todo: convert it to an extension
             var xdoc = GetXDocStream();
             var el = xdoc.Root.Elements("Person").Where(x => x.Attribute("ID").Value == id);
             var test = el.Count();
