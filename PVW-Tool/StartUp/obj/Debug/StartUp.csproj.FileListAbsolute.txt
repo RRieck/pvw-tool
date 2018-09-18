@@ -10,5 +10,3 @@ Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.g.resources
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.csproj.CoreCompileInputs.cache
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.exe
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.pdb
-Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp_Content.g.cs
-Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Datenhaltung\TestFile.xml
