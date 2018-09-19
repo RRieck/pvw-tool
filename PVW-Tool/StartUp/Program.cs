@@ -18,7 +18,6 @@ namespace StartUp
             //Open GUI Here
             //new Application().Run(new GUI());
 
-            
 
             var employee1 = new Employee()
             {
@@ -52,6 +51,7 @@ namespace StartUp
             }
 
             Console.ReadLine();
+
 
         }
     }
