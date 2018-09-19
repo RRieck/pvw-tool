@@ -63,14 +63,26 @@ namespace StartUp.Datenhaltung
             }
         }
 
-        public void ChangeExistingEntry(Employee employee)
-        {
-            throw new NotImplementedException();
-        }
-
         public void DeleteEntry(string id)
         {
-            throw new NotImplementedException();
+            using (var context = new SQLDataDataContext())
+            {
+                var obj = context.Personal.First(x => x.personal_nr.Equals(id));
+                var departmentId = obj.abteilung_id;
+
+                context.Personal.DeleteOnSubmit(obj);
+                context.Abteilung.DeleteOnSubmit(context.Abteilung.First(x => x.abteilung_id.Equals(departmentId)));
+
+                context.SubmitChanges();
+            }       
+        }
+
+        public void ChangeExistingEntry(Employee employee)
+        {
+            using (var context = new SQLDataDataContext())
+            {
+                var obj = context.Personal.First(x => x.personal_nr.Equals(employee.Id));
+            }
         }
     }
 }
