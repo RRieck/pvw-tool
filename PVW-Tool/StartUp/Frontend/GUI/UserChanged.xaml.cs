@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StartUp.Frontend
+namespace StartUp.Frontend.GUI
 {
     /// <summary>
-    /// Interaction logic for GUI.xaml
+    /// Interaction logic for UseChanged.xaml
     /// </summary>
-    public partial class GUI : Window
+    public partial class UserChanged : Window
     {
-        public GUI()
+        public UserChanged()
         {
             InitializeComponent();
         }

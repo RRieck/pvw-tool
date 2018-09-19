@@ -9,7 +9,7 @@ using StartUp.Model;
 
 namespace StartUp.Datenhaltung
 {
-    public class XmlParser
+    public class XmlParser : IDatenhaltung
     {
         readonly string _path;
         readonly string _fileName;
@@ -50,7 +50,7 @@ namespace StartUp.Datenhaltung
             if (!CheckIfEntryExists(uniqueId.ToString()))
             {
                 xdoc.Elements("Personen")
-                    .First().Add(new XElement("Person", new XAttribute("ID", IdCreator.Generate()),
+                    .First().Add(new XElement("Person", new XAttribute("ID", uniqueId),
                                        new XElement("Vorname", prename),
                                        new XElement("Nachname", lastname),
                                        new XElement("Abteilung", employee.Abteilung)));
@@ -107,15 +107,11 @@ namespace StartUp.Datenhaltung
 
         bool CheckIfEntryExists(string id)
         {
-            //todo: convert it to an extension
             var xdoc = GetXDocStream();
             var el = xdoc.Root.Elements("Person").Where(x => x.Attribute("ID").Value == id);
             var test = el.Count();
 
-            if (test > 0)
-                return true;
-
-            return false;
+            return test > 0;
         }
     }
 }

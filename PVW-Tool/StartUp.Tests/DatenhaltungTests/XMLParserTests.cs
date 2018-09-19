@@ -32,7 +32,7 @@ namespace StartUp.Tests.DatenhaltungTests
         [TestMethod]
         public void ReadFileAndGetBack3Elements()
         {
-            Assert.AreEqual(3, _parser.ReadFile().Count);
+            Assert.AreEqual(3, _parser.GetEmployees().Count);
         }
     }
 }

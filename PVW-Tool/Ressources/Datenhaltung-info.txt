@@ -1,0 +1,20 @@
+XMLParser
+    GetEmployees():
+        - liefert eine Liste vom Typ Employee zurück (zu finden in Model StartUp/Model/Employee.cs)
+
+    WriteNewEntry(Employee):
+        - Wie ersichtlich muss hier ein employee Objekt mitgegeben werden
+        - Alle werden in Employee !müssen! gefüllt werden => Grund dafür ist, dass uns bei der einfachen Modellierung des Falls, es uns nichts bringt 
+        wenn wir die Abteilung oder den Namen nicht setzen. 
+        - Die Ausnahme bildet hier die ID. Diese wird in der Methode gesetzt 
+
+    ChangeEnxistingEntry(Employee):
+        - Hier ist wichtig, dass die ID gleich der des Eintrags ist, den man ändern möchte
+        - Jetzt kann und muss man die Werte Name und Abteilung setzen (würde einfach sagen die Elemente aus dem UserChanged Window [oder wie es auch immer
+        heißen wird])
+
+    DeleteEntry(id)
+        - hier einfach die Id des zu löschenden Eintrags angeben
+
+
+
