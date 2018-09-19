@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using StartUp.Model;
 
-namespace StartUp.Datenhaltung
+namespace StartUp.Datenhaltung.DoNotTouchThis.ISaidDoNot
 {
     public interface IDatenhaltung
     {

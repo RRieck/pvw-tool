@@ -48,8 +48,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Datenhaltung\IDatenhaltung.cs" />
-    <Compile Include="Datenhaltung\SQLData.designer.cs">
+    <Compile Include="Datenhaltung\DoNotTouchThis\ISaidDoNot\IDatenhaltung.cs" />
+    <Compile Include="Datenhaltung\DoNotTouchThis\ISaidDoNot\SQLData.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SQLData.dbml</DependentUpon>
@@ -78,12 +78,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Datenhaltung\SQLData.dbml">
+    <None Include="Datenhaltung\DoNotTouchThis\ISaidDoNot\SQLData.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SQLData.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Datenhaltung\SQLData.dbml.layout">
+    <None Include="Datenhaltung\DoNotTouchThis\ISaidDoNot\SQLData.dbml.layout">
       <DependentUpon>SQLData.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Linq;
 using System.Diagnostics;
 using System.Linq;
+using StartUp.Datenhaltung.DoNotTouchThis.ISaidDoNot;
 using StartUp.Infrastructure.Extensions;
 using StartUp.Model;
 
@@ -17,17 +18,17 @@ namespace StartUp.Datenhaltung
             {
                 foreach (var entry in context.Personal)
                 {
-                    var guid = IdCreator.Generate();
-                    var abteilungsname = context.Abteilung.Where(x => x.abteilung_id.Equals(entry.abteilung_id))
-                        .Select(y => y.name).FirstOrDefault();
+                    var abteilungsname = context.Abteilung
+                        .Where(x => x.abteilung_id.Equals(entry.abteilung_id))
+                        .Select(x => x.name)
+                        .First();
 
-                    var newEmployee = new Employee()
+                    employees.Add(new Employee()
                     {
-                        Id = guid.ToString(),
+                        Id = IdCreator.Generate().ToString(),
                         Name = entry.vname + " " + entry.nname,
                         Abteilung = abteilungsname
-                    };
-                    employees.Add(newEmployee);
+                    });
                 }
             }
             return employees;
@@ -35,40 +36,26 @@ namespace StartUp.Datenhaltung
 
         public void WriteNewEntry(Employee employee)
         {
-            try
+            using (var context = new SQLDataDataContext())
             {
-                using (var context = new SQLDataDataContext())
+                var abteilungID = "A_" + IdCreator.Generate();
+
+                context.Personal.InsertOnSubmit(new Personal()
                 {
-                    var personal_nr = IdCreator.Generate();
-                    var abteilung_id = "A_" + IdCreator.Generate();
+                    personal_nr = IdCreator.Generate().ToString(),
+                    abteilung_id = abteilungID,
+                    vname = NameParser.ReceivePreAndLastname(employee.Name).First(),
+                    nname = NameParser.ReceivePreAndLastname(employee.Name).Last()
+                });
 
-                    var dbEmployee = new Personal()
-                    {
-                        personal_nr = personal_nr.ToString(),
-                        vname = NameParser.ReceivePreAndLastname(employee.Name).First(),
-                        nname = NameParser.ReceivePreAndLastname(employee.Name).Last(),
-                        abteilung_id = abteilung_id
-                    };
+                context.Abteilung.InsertOnSubmit(new Abteilung()
+                {
+                    name = employee.Abteilung,
+                    abteilung_id = abteilungID
+                });
 
-                    context.Personal.InsertOnSubmit(dbEmployee);
-
-                    var dbDepartment = new Abteilung()
-                    {
-                        name = employee.Abteilung,
-                        abteilung_id = abteilung_id
-                    };
-
-                    context.Abteilung.InsertOnSubmit(dbDepartment);
-
-                    context.SubmitChanges(ConflictMode.ContinueOnConflict);
-                }
+                context.SubmitChanges(ConflictMode.ContinueOnConflict);
             }
-            catch (Exception e)
-            {
-                Debug.Write(e.Message);
-                throw;
-            }
-            
         }
 
         public void DeleteEntry(string id)
@@ -107,9 +94,7 @@ namespace StartUp.Datenhaltung
         bool ContainsEntry(string id)
         {
             using (var context = new SQLDataDataContext())
-            {
                 return context.Personal.Any(x => x.personal_nr.Equals(id));
-            }
         }
     }
 }
