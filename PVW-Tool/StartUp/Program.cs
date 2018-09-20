@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Threading;
-using StartUp.Datenhaltung;
-using StartUp.Model;
 
 namespace StartUp
 {

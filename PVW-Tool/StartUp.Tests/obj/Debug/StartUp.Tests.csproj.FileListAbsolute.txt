@@ -15,3 +15,12 @@ Z:\pvw-tool\PVW-Tool\StartUp.Tests\obj\Debug\StartUp.Tests.csproj.CoreCompileInp
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\obj\Debug\StartUp.Tests.csproj.CopyComplete
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\obj\Debug\StartUp.Tests.dll
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\obj\Debug\StartUp.Tests.pdb
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Datenhaltung\DoNotTouchThis\ISaidDoNot\SQLData.dbml
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Datenhaltung\DoNotTouchThis\ISaidDoNot\SQLData.designer.cs
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Datenhaltung\DoNotTouchThis\ISaidDoNot\SQLData.dbml.layout
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.Data.Sqlite.dll
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Dapper.dll
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\netstandard.dll
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\SQLitePCLRaw.core.dll
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.Data.Sqlite.xml
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Dapper.xml
