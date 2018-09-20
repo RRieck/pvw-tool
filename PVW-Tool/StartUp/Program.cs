@@ -14,21 +14,18 @@ namespace StartUp
             //Open GUI Here
             //new Application().Run(new GUI());
 
-
-            //new Datenhaltung.SqliteDataAccess().WriteNewEntry(new Employee()
-            //{
-            //    Name = "Test Testing",
-            //    Abteilung = "Test"
-            //});
-
-
-            foreach (var el in new Datenhaltung.SqliteDataAccess().GetEmployees())
+            var jhannes = new Employee()
             {
-                Console.WriteLine(el.Name);
-            }
+                Id = "6efd47cf-6b7a-4aca-b4be-ee55256519c5",
+                Name ="Johannes kunz",
+                Abteilung = "FrontENDE"
+            };
 
-            //new Datenhaltung.SqliteDataAccess().GetEmployees();
+            //new Datenhaltung.SqliteDataAccess().WriteNewEntry(jhannes);
+            //new Datenhaltung.SqliteDataAccess().ChangeExistingEntry(jhannes);
+            new Datenhaltung.SqliteDataAccess().DeleteEntry("6efd47cf-6b7a-4aca-b4be-ee55256519c5");
 
+            Console.WriteLine("feetich!");
             Console.ReadLine();
         }
     }

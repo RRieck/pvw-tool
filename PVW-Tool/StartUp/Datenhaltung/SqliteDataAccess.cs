@@ -57,20 +57,32 @@ namespace StartUp.Datenhaltung
 
                 con.Execute("Insert into Department (department_id, name) values (@department_id, @name)", new Model.SqLiteModels.Department(){
                     department_id = departmentID,
-                    name = employee.Name
+                    name = employee.Abteilung
                 });
+            }
+        }
+
+        public void DeleteEntry(string id)
+        {
+            using(IDbConnection con = new SqliteConnection(ReceiveConnectionString()))
+            {
+                var employeeObj =  con.Query<Model.SqLiteModels.Employee>($"select employee_nr, firstname,lastname, department_id from Employee where employee_nr = '{id}'",new DynamicParameters()).ToList().First();
+                con.Execute($"delete from Employee where employee_nr = '{id}'");
+                con.Execute($"delete from Department where department_id = '{employeeObj.department_id}'");
             }
         }
 
         public void ChangeExistingEntry(Employee employee)
         {
-            throw new NotImplementedException();
+           using(IDbConnection con = new SqliteConnection(ReceiveConnectionString()))
+            {
+                var employeeObj =  con.Query<Model.SqLiteModels.Employee>($"select employee_nr, firstname,lastname, department_id from Employee where employee_nr = '{employee.Id}'",new DynamicParameters()).ToList().First();
+                con.Execute($"update Employee set firstname = '{NameParser.ReceivePreAndLastname(employee.Name).First()}', lastname = '{NameParser.ReceivePreAndLastname(employee.Name).Last()}' where employee_nr = '{employee.Id}'");
+                con.Execute($"update Department set name = '{employee.Abteilung}' where department_id = '{employeeObj.department_id}'");
+            }
         }
 
-        public void DeleteEntry(string id)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         private string ReceiveConnectionString()
         {
