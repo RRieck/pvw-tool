@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("datenhaltung/donottouchthis/isaiddonot/sqldata.dbml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("e_sqlite3.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("e_sqlite3.dll")]
 
 

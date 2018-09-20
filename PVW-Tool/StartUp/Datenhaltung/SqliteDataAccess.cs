@@ -8,31 +8,59 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Data.Sqlite;
 using StartUp.Datenhaltung.DoNotTouchThis.ISaidDoNot;
+using StartUp.Infrastructure.Extensions;
 using StartUp.Model;
 
 namespace StartUp.Datenhaltung
 {
     class SqliteDataAccess : IDatenhaltung
     {
+        public SqliteDataAccess()
+        {
+               SQLitePCL.Batteries.Init();
+        }
+
         public List<Employee> GetEmployees()
         {
+            List<Employee> employeeAccordingToDepartureList = new List<Employee>();
             using (IDbConnection con = new SqliteConnection(ReceiveConnectionString()))
             {
-                return con.Query<Employee>("select",new DynamicParameters()).ToList();
+                var employees =  con.Query<Model.SqLiteModels.Employee>("select employee_nr, firstname,lastname, department_id from Employee",new DynamicParameters()).ToList();
+                var departments =  con.Query<Model.SqLiteModels.Department>("select department_id, name from Department",new DynamicParameters()).ToList();
+
+                for (int i = 0; i < employees.Count ; i++)
+                {
+                    employeeAccordingToDepartureList.Add(new Employee()
+                    {
+                        Id = employees[i].employee_nr,
+                        Name = employees[i].firstname +  " " + employees[i].lastname,
+                        Abteilung = departments.Where(entry => entry.department_id == employees[i].department_id).Select(entry => entry.name).First()
+                    });
+                }
             }
+            return employeeAccordingToDepartureList;
         }
 
         public void WriteNewEntry(Employee employee)
         {
-            throw new NotImplementedException();
+            using (IDbConnection con = new SqliteConnection(ReceiveConnectionString()))
+            {
+                var employeNR  = IdCreator.Generate();
+                var departmentID  = "A_" + IdCreator.Generate();
+
+                con.Execute("Insert into Employee (employee_nr, firstname, lastname, department_id) values (@employee_nr, @firstname, @lastname, @department_id)", new Model.SqLiteModels.Employee(){
+                    employee_nr = employeNR.ToString(),
+                    firstname = NameParser.ReceivePreAndLastname(employee.Name).First(),
+                    lastname = NameParser.ReceivePreAndLastname(employee.Name).Last(),
+                    department_id = departmentID
+                });
+
+                con.Execute("Insert into Department (department_id, name) values (@department_id, @name)", new Model.SqLiteModels.Department(){
+                    department_id = departmentID,
+                    name = employee.Name
+                });
+            }
         }
-
-        private string ReceiveConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["SqLiteConn"].ConnectionString;
-        }
-
-
 
         public void ChangeExistingEntry(Employee employee)
         {
@@ -44,6 +72,9 @@ namespace StartUp.Datenhaltung
             throw new NotImplementedException();
         }
 
-        
+        private string ReceiveConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["SqLiteConn"].ConnectionString;
+        }
     }
 }

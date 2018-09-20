@@ -24,3 +24,8 @@ Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\netstandard.dll
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\SQLitePCLRaw.core.dll
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.Data.Sqlite.xml
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Dapper.xml
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\x86\e_sqlite3.dll
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\x64\e_sqlite3.dll
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\StartUp.Tests.dll.config
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\SQLitePCLRaw.batteries_green.dll
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\SQLitePCLRaw.provider.e_sqlite3.dll
