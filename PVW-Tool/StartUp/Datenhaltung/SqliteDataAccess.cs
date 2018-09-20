@@ -45,11 +45,10 @@ namespace StartUp.Datenhaltung
         {
             using (IDbConnection con = new SqliteConnection(ReceiveConnectionString()))
             {
-                var employeNR  = IdCreator.Generate();
                 var departmentID  = "A_" + IdCreator.Generate();
 
                 con.Execute("Insert into Employee (employee_nr, firstname, lastname, department_id) values (@employee_nr, @firstname, @lastname, @department_id)", new Model.SqLiteModels.Employee(){
-                    employee_nr = employeNR.ToString(),
+                    employee_nr = IdCreator.Generate().ToString(),
                     firstname = NameParser.ReceivePreAndLastname(employee.Name).First(),
                     lastname = NameParser.ReceivePreAndLastname(employee.Name).Last(),
                     department_id = departmentID
@@ -81,8 +80,6 @@ namespace StartUp.Datenhaltung
                 con.Execute($"update Department set name = '{employee.Abteilung}' where department_id = '{employeeObj.department_id}'");
             }
         }
-
-        
 
         private string ReceiveConnectionString()
         {
