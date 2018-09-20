@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StartUp.Model;
+using System;
 
 namespace StartUp
 {
@@ -12,6 +13,21 @@ namespace StartUp
 
             //Open GUI Here
             //new Application().Run(new GUI());
+
+
+            new Datenhaltung.SqlDataAccess().WriteNewEntry(new Employee()
+            {
+                Name = "Test Testing",
+                Abteilung="Test"
+            });
+
+
+            foreach(var el in new Datenhaltung.SqlDataAccess().GetEmployees())
+            {
+                Console.WriteLine(el.Name);
+            }
+
+            Console.ReadLine();
         }
     }
 }

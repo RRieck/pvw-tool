@@ -118,3 +118,4 @@ Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Microsoft.Data.Sqlite.xml
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.exe.config
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp_Content.g.cs
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.csproj.CopyComplete
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.csprojAssemblyReference.cache
