@@ -83,7 +83,8 @@ namespace StartUp.Datenhaltung
 
         private string ReceiveConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["SqLiteConn"].ConnectionString;
+            var test = ConfigurationManager.ConnectionStrings["SqLiteConn"].ConnectionString;
+            return test;
         }
     }
 }
