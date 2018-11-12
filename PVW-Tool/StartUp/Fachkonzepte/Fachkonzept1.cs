@@ -1,87 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
+using StartUp.Datenhaltung;
 using StartUp.Model;
 
 namespace StartUp.Fachkonzepte
 {
     class Fachkonzept1 : IFachkonzept
     {
-        Datenhaltung.XmlParser xml;
-        Datenhaltung.SqliteDataAccess sql;
-        string _dataStructure;
-
-        public Fachkonzept1(string dataStructure)
+        XmlParser data;
+        //SqliteDataAccess data;
+        public Fachkonzept1()
         {
-            if (dataStructure.ToLower().Trim().Equals("xml"))
-            {
-                xml = new Datenhaltung.XmlParser();
-                _dataStructure = dataStructure.ToLower().Trim();
-            }
-            else if (dataStructure.ToLower().Trim().Equals("sql"))
-            {
-                sql = new Datenhaltung.SqliteDataAccess();
-                _dataStructure = dataStructure;
-            }
-            else
-                Debug.Write("Keine Datenanbinung => 'Yeeeee'");
+            data = new XmlParser();
+          //  data = new SqliteDataAccess();
         }
 
         public void ChangeEmployee(string id, string name, string abteilung)
         {
-            if (_dataStructure.Equals("xml"))
+            data.ChangeExistingEntry(new Employee()
             {
-                xml.ChangeExistingEntry(new Employee()
-                {
-                    Id = id,
-                    Name = name,
-                    Abteilung = abteilung
-                });
-            }
+                Id = id,
+                Name = name,
+                Abteilung = abteilung
+            });
         }
 
         public void CreateEmployee(string name, string abteilung)
         {
-            if (_dataStructure.Equals("xml"))
+            data.WriteNewEntry(new Employee()
             {
-                xml.WriteNewEntry(new Employee()
-                {
-                    Name = name,
-                    Abteilung = abteilung
-                });
-            }
-            else if (_dataStructure.Equals("sql"))
-            {
-                sql.WriteNewEntry(new Employee()
-                {
-                    Name = name,
-                    Abteilung = abteilung
-                });
-            }
+                Name = name,
+                Abteilung = abteilung
+            });
         }
 
         public void DeleteEmployee(string id)
         {
-            if (_dataStructure.Equals("xml"))
-                xml.DeleteEntry(id);
-            else if (_dataStructure.Equals("sql"))
-                sql.DeleteEntry(id);
-
+            data.DeleteEntry(id);
         }
 
         public List<Employee> GetEmployees()
         {
-            return _dataStructure.Equals("xml") ? xml.GetEmployees() : sql.GetEmployees();
+            return data.GetEmployees();
         }
 
         public List<Employee> SearchFor(string category, string name, string id)
         {
-            if (_dataStructure.Equals("xml"))
-                return xml.GetEmployees().Where(x => x.Id.Equals(id) && x.Abteilung.Equals(category) && x.Name.Contains(name)).ToList();
-            else if (_dataStructure.Equals("sql"))
-                return sql.GetEmployees().Where(x => x.Id.Equals(id) && x.Abteilung.Equals(category) && x.Name.Contains(name)).ToList();
-            return null;
+            return data.GetEmployees()
+                .Where(x => x.Id.Equals(id) && x.Abteilung.Equals(category) && x.Name.Contains(name))
+                .ToList();
         }
     }
 }
