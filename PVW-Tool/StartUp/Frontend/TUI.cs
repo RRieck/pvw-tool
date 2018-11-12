@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,8 @@ namespace StartUp.Frontend
         {
             InitializeMenu();
             string input = Console.ReadLine();
-            if (!InputValidator(input))
+            Tuple<bool, int> validatedInput = IntegerValidator(input);
+            if (!validatedInput.Item1 & validatedInput.Item2 <= 6)
             {
                 Console.WriteLine("\n Ihre Eingabe entspricht keiner Option.\n");
                 Console.ReadLine();
@@ -31,7 +33,6 @@ namespace StartUp.Frontend
             {
                 case 1:
                     AddEmployee();
-                    backend(name, abteilung)
                     break;
                 case 2:
                     break;
@@ -44,14 +45,6 @@ namespace StartUp.Frontend
                 case 6:
                     break;
             }   
-        }
-
-        Boolean InputValidator(string input)
-        {
-            int option;
-            bool isInteger = int.TryParse(input, out option);
-
-            return isInteger & option <= 6;
         }
 
         void InitializeMenu()
@@ -71,10 +64,45 @@ namespace StartUp.Frontend
         void AddEmployee()
         {
             Console.Clear();
-            Console.WriteLine("Bitte geben sie zunächst den Namen des Mitarbeiters ein.");
-            validator
-            rückgabe
-            
+
+            string name;
+            do
+            {
+                Console.WriteLine("Bitte geben sie zunächst den Vor- und Zunamen des Mitarbeiters ein.");
+                name = Console.ReadLine();
+            } while (!CheckValidString(name));
+
+            Tuple<bool, int> validatedInput;
+            do
+            {
+                Console.WriteLine("Bitte wählen sie nun die Abteilung.");
+                Console.WriteLine("(1) - Personalabteilung");
+                Console.WriteLine("(2) - Entwickler");
+                Console.WriteLine("(3) - Netzwerk");
+                Console.WriteLine("(4) - Managment");
+
+                validatedInput = IntegerValidator(Console.ReadLine());
+            } while (!validatedInput.Item1 & validatedInput.Item2 <= 4 );
+            Console.WriteLine(name + " : " + validatedInput.Item2);
+            Console.ReadLine();
+        }
+
+        Tuple<bool, int> IntegerValidator(string input)
+        {
+            int option;
+            bool isInteger = int.TryParse(input, out option);
+
+            return Tuple.Create(isInteger, option);
+        }
+
+        bool CheckValidString(string inputString)
+        {
+            var regex = new Regex("^[a-zA-Z0-9 äüöÄÜÖß]*$");
+            if (!regex.IsMatch(inputString))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
