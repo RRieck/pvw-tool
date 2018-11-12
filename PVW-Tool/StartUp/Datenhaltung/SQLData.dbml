@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DataSource" Class="SQLDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;Integrated Security=True" SettingsObjectName="StartUp.Properties.Settings" SettingsPropertyName="DataSourceConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Abteilung" Member="Abteilung">
+    <Type Name="Abteilung">
+      <Column Name="abteilung_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Personal_Abteilung" Member="Personal" ThisKey="abteilung_id" OtherKey="abteilung_id" Type="Personal" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Personal" Member="Personal">
+    <Type Name="Personal">
+      <Column Name="personal_nr" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="vname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="abteilung_id" Type="System.String" DbType="VarChar(50)" CanBeNull="false" />
+      <Association Name="Personal_Abteilung" Member="Abteilung" ThisKey="abteilung_id" OtherKey="abteilung_id" Type="Abteilung" />
+    </Type>
+  </Table>
+</Database>
