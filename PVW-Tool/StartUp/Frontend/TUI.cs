@@ -11,40 +11,48 @@ namespace StartUp.Frontend
     {
         public TUI()
         {
-
-            menu();
+            Fachkonzepte.Fachkonzept1 fach = new Fachkonzepte.Fachkonzept1();
+            menu(fach);
         }
 
-        void menu()
+        void menu(Fachkonzepte.Fachkonzept1 fach)
         {
-            InitializeMenu();
-            string input = Console.ReadLine();
-            Tuple<bool, int> validatedInput = IntegerValidator(input);
-            if (!validatedInput.Item1 & validatedInput.Item2 <= 6)
+            bool turnOff;
+            do
             {
-                Console.WriteLine("\n Ihre Eingabe entspricht keiner Option.\n");
-                Console.ReadLine();
-                menu();
-            }
+                InitializeMenu();
+                turnOff = false;
+                string input = Console.ReadLine();
+                Tuple<bool, int> validatedInput = IntegerValidator(input);
+                if (!validatedInput.Item1 & validatedInput.Item2 <= 6)
+                {
+                    Console.WriteLine("\n Ihre Eingabe entspricht keiner Option.\n");
+                    Console.ReadLine();
+                    menu(fach);
+                }
 
-            int option = Int32.Parse(input);
+                int option = Int32.Parse(input);
 
-            switch (option)
-            {
-                case 1:
-                    AddEmployee();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-            }   
+                switch (option)
+                {
+                    case 1:
+                        Tuple<string, string> employee = AddEmployee();
+                        Console.WriteLine(employee.Item1 + " : " + employee.Item2);
+                        fach.CreateEmployee(employee.Item1, employee.Item2);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        turnOff = true;
+                        break;
+                }
+            } while (!turnOff);
         }
 
         void InitializeMenu()
@@ -61,7 +69,7 @@ namespace StartUp.Frontend
             Console.WriteLine("(6) - Programm beenden\n");
         }
 
-        void AddEmployee()
+        Tuple<string, string> AddEmployee()
         {
             Console.Clear();
 
@@ -83,8 +91,7 @@ namespace StartUp.Frontend
 
                 validatedInput = IntegerValidator(Console.ReadLine());
             } while (!validatedInput.Item1 & validatedInput.Item2 <= 4 );
-            Console.WriteLine(name + " : " + validatedInput.Item2);
-            Console.ReadLine();
+            return new Tuple<string, string> (name , DepartmentIdConverter(validatedInput.Item2));
         }
 
         Tuple<bool, int> IntegerValidator(string input)
@@ -103,6 +110,22 @@ namespace StartUp.Frontend
                 return false;
             }
             return true;
+        }
+
+        string DepartmentIdConverter(int department_id)
+        {
+            switch (department_id)
+            {
+                case 1:
+                    return "Personalabteilung";
+                case 2:
+                    return "Entwickler";
+                case 3:
+                    return "Netzwerk";
+                case 4:
+                    return "Managment";
+            }
+            return "";
         }
     }
 }
