@@ -15,25 +15,26 @@ namespace StartUp.Fachkonzepte
           //  data = new SqliteDataAccess();
         }
 
-        public void ChangeEmployee(string id, string name, string abteilung)
+        public void ChangeEmployee(string id, string name, string department)
         {
             data.ChangeExistingEntry(new Employee()
             {
                 Id = id,
                 Name = name,
-                Abteilung = abteilung
+                Abteilung = department
             });
         }
 
-        public void CreateEmployee(string name, string abteilung)
+        public void CreateEmployee(string name, string department)
         {
             data.WriteNewEntry(new Employee()
             {
                 Name = name,
-                Abteilung = abteilung
+                Abteilung = department
             });
         }
-
+        // Hier würde ich es auch besser finden wenn wir da ein integer eigentlich überegeben?! weiß nur nicht ob dann wo anders was kaputt geht
+        //  dewegen habe ich es nicht geändert
         public void DeleteEmployee(string id)
         {
             data.DeleteEntry(id);
@@ -43,11 +44,13 @@ namespace StartUp.Fachkonzepte
         {
             return data.GetEmployees();
         }
-
-        public List<Employee> SearchFor(string category, string name, string id)
+        // Hier würde ich mir noch gerne wünschen das wir eine mit allen drei paramtern einzeln los schicken können -> 
+        // also zum beispiel nur mit name oder nur mit abteilung weil sonst brauch man die suche nicht
+        // -- hoffe ron du liest das hier :P
+        public List<Employee> SearchFor(string department, string name, string id)
         {
             return data.GetEmployees()
-                .Where(x => x.Id.Equals(id) && x.Abteilung.Equals(category) && x.Name.Contains(name))
+                .Where(x => x.Id.Equals(id) && x.Abteilung.Equals(department) && x.Name.Contains(name))
                 .ToList();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using StartUp.Infrastructure.Validator;
 using StartUp.Infrastructure.Converter;
 
@@ -33,15 +34,21 @@ namespace StartUp.Frontend
                 switch (option)
                 {
                     case 1:
-                        Tuple<string, string> employee = AddEmployee();
+                        Tuple<string, string> employee = AddEmployeeMenu();
                         Console.WriteLine(employee.Item1 + " : " + employee.Item2);
                         fach.CreateEmployee(employee.Item1, employee.Item2);
                         break;
                     case 2:
+
                         break;
                     case 3:
+                        List<string> search_parameters = SearchEmployeeMenu();
+                        // weiß nicht was ich hier als variablen typ nehmen muss können wir das freitag ( also heute) besprechen? wenn wir beide zeit haben?
+                        // List<object> treffer = fach.SearchFor(search_parameters[0], search_parameters[1], search_parameters[2]);
                         break;
                     case 4:
+                        string customer_id = DeleteEmployeeMenu();
+                        fach.DeleteEmployee(customer_id);
                         break;
                     case 5:
                         break;
@@ -50,6 +57,34 @@ namespace StartUp.Frontend
                         break;
                 }
             } while (!turnOff);
+        }
+
+        // habe hier erstmal die suche so gemacht das sie zu dem fachkonzept passt
+        // noch nicht ganz fertig
+        List<string> SearchEmployeeMenu()
+        {
+            Console.WriteLine("Bitte geben sie zu erst die ID des Mitarbeiters ein.");
+            string customer_id = Console.ReadLine();
+            Console.WriteLine("Bitte geben sie zu erst den Namen des Mitarbeiters ein.");
+            string name = Console.ReadLine();
+            Console.WriteLine("Bitte geben sie zu erst die Abteilung des Mitarbeiters ein.");
+            string department = Console.ReadLine();
+
+            List<string> search_paramters = new List<string>()
+            {
+                department,
+                name,
+                customer_id
+            };
+
+            return search_paramters;
+        }
+
+        string DeleteEmployeeMenu()
+        {
+            Console.WriteLine("Bitte geben Sie die ID des Mitarbeiters der gelöscht werden soll ein.");
+            string customer_id = Console.ReadLine();
+            return customer_id;
         }
 
         void InitializeMenu()
@@ -66,7 +101,7 @@ namespace StartUp.Frontend
             Console.WriteLine("(6) - Programm beenden\n");
         }
 
-        Tuple<string, string> AddEmployee()
+        Tuple<string, string> AddEmployeeMenu()
         {
             Console.Clear();
 
