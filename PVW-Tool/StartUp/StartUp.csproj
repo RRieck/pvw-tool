@@ -172,8 +172,10 @@
     <Compile Include="Frontend\GUI\UserChanged.xaml.cs">
       <DependentUpon>UserChanged.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Converter\IDConverter.cs" />
     <Compile Include="Infrastructure\Extensions\IdCreator.cs" />
     <Compile Include="Infrastructure\Extensions\NameParser.cs" />
+    <Compile Include="Infrastructure\Validator\Validate.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\SqLiteModels\Department.cs" />
     <Compile Include="Model\SqLiteModels\Employee.cs" />

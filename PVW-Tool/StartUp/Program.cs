@@ -13,7 +13,7 @@ namespace StartUp
 
             //Open GUI Here
             //new Application().Run(new GUI());
-            new Fachkonzepte.Fachkonzept1();
+            new StartUp.Frontend.TUI();
         }
     }
 }

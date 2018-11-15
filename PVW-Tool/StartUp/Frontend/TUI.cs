@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using StartUp.Infrastructure.Validator;
+using StartUp.Infrastructure.Converter;
 
 namespace StartUp.Frontend
 {
@@ -12,10 +9,10 @@ namespace StartUp.Frontend
         public TUI()
         {
             Fachkonzepte.Fachkonzept1 fach = new Fachkonzepte.Fachkonzept1();
-            menu(fach);
+            Menu(fach);
         }
 
-        void menu(Fachkonzepte.Fachkonzept1 fach)
+        void Menu(Fachkonzepte.Fachkonzept1 fach)
         {
             bool turnOff;
             do
@@ -23,12 +20,12 @@ namespace StartUp.Frontend
                 InitializeMenu();
                 turnOff = false;
                 string input = Console.ReadLine();
-                Tuple<bool, int> validatedInput = IntegerValidator(input);
+                Tuple<bool, int> validatedInput = Validate.IntegerValidator(input);
                 if (!validatedInput.Item1 & validatedInput.Item2 <= 6)
                 {
                     Console.WriteLine("\n Ihre Eingabe entspricht keiner Option.\n");
                     Console.ReadLine();
-                    menu(fach);
+                    Menu(fach);
                 }
 
                 int option = Int32.Parse(input);
@@ -76,9 +73,10 @@ namespace StartUp.Frontend
             string name;
             do
             {
+                //vlt noch dazuschreiben, dass Zweitnamen mit einem "-" getrennt werden müssen => ansonsten läufts ganz gut :thumb:
                 Console.WriteLine("Bitte geben sie zunächst den Vor- und Zunamen des Mitarbeiters ein.");
                 name = Console.ReadLine();
-            } while (!CheckValidString(name));
+            } while (!Validate.CheckValidString(name));
 
             Tuple<bool, int> validatedInput;
             do
@@ -89,43 +87,9 @@ namespace StartUp.Frontend
                 Console.WriteLine("(3) - Netzwerk");
                 Console.WriteLine("(4) - Managment");
 
-                validatedInput = IntegerValidator(Console.ReadLine());
-            } while (!validatedInput.Item1 & validatedInput.Item2 <= 4 );
-            return new Tuple<string, string> (name , DepartmentIdConverter(validatedInput.Item2));
-        }
-
-        Tuple<bool, int> IntegerValidator(string input)
-        {
-            int option;
-            bool isInteger = int.TryParse(input, out option);
-
-            return Tuple.Create(isInteger, option);
-        }
-
-        bool CheckValidString(string inputString)
-        {
-            var regex = new Regex("^[a-zA-Z0-9 äüöÄÜÖß]*$");
-            if (!regex.IsMatch(inputString))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        string DepartmentIdConverter(int department_id)
-        {
-            switch (department_id)
-            {
-                case 1:
-                    return "Personalabteilung";
-                case 2:
-                    return "Entwickler";
-                case 3:
-                    return "Netzwerk";
-                case 4:
-                    return "Managment";
-            }
-            return "";
+                validatedInput = Validate.IntegerValidator(Console.ReadLine());
+            } while (!validatedInput.Item1 & validatedInput.Item2 <= 4);
+            return new Tuple<string, string>(name, IDConverter.DepartmentIdConverter(validatedInput.Item2));
         }
     }
 }

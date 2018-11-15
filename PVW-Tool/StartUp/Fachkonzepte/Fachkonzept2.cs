@@ -9,7 +9,7 @@ namespace StartUp.Fachkonzepte
 {
     class Fachkonzept2 : IFachkonzept
     {
-        public void ChangeEmployee(string id)
+        public void ChangeEmployee(string id, string name, string abteilung)
         {
             throw new NotImplementedException();
         }
@@ -19,7 +19,7 @@ namespace StartUp.Fachkonzepte
             throw new NotImplementedException();
         }
 
-        public void DeleteEmployee()
+        public void DeleteEmployee(string id)
         {
             throw new NotImplementedException();
         }
@@ -29,7 +29,7 @@ namespace StartUp.Fachkonzepte
             throw new NotImplementedException();
         }
 
-        public List<Employee> SearchFor(string id)
+        public List<Employee> SearchFor(string category, string name, string id)
         {
             throw new NotImplementedException();
         }
