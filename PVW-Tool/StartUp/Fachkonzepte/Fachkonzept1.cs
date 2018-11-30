@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using StartUp.Datenhaltung;
+using StartUp.Infrastructure.Extensions;
 using StartUp.Model;
 
 namespace StartUp.Fachkonzepte
@@ -34,7 +35,8 @@ namespace StartUp.Fachkonzepte
             });
         }
         // Hier würde ich es auch besser finden wenn wir da ein integer eigentlich überegeben?! weiß nur nicht ob dann wo anders was kaputt geht
-        //  dewegen habe ich es nicht geändert
+        //  dewegen habe ich es nicht geändert 
+        // -------------Ist es jetzt klar warum es ein string ist (wenn ja einfach comment entfernen :) )?!?-------------------
         public void DeleteEmployee(string id)
         {
             data.DeleteEntry(id);
@@ -44,14 +46,26 @@ namespace StartUp.Fachkonzepte
         {
             return data.GetEmployees();
         }
-        // Hier würde ich mir noch gerne wünschen das wir eine mit allen drei paramtern einzeln los schicken können -> 
-        // also zum beispiel nur mit name oder nur mit abteilung weil sonst brauch man die suche nicht
-        // -- hoffe ron du liest das hier :P
+        
         public List<Employee> SearchFor(string department, string name, string id)
         {
-            return data.GetEmployees()
-                .Where(x => x.Id.Equals(id) && x.Abteilung.Equals(department) && x.Name.Contains(name))
-                .ToList();
+            var resultList = new List<Employee>();
+            var CachedList = new List<Employee>();
+
+            var emplyees = data.GetEmployees();
+
+            if (!string.IsNullOrEmpty(department))
+                CachedList.AddRange(emplyees.Where(x => x.Abteilung.Equals(department.Trim())).ToList());
+
+            if (!string.IsNullOrEmpty(name))
+                CachedList.AddRange(emplyees.Where(x => x.Name.Equals(name)).ToList());
+
+            if (!string.IsNullOrEmpty(id))
+                CachedList.AddRange(emplyees.Where(x => x.Id.Equals(id)).ToList());
+
+            resultList = ListParser.DeleteContainedEntries(CachedList);
+
+            return resultList;
         }
     }
 }
