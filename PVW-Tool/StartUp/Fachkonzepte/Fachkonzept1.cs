@@ -53,10 +53,10 @@ namespace StartUp.Fachkonzepte
             var emplyees = data.GetEmployees();
 
             if (!string.IsNullOrEmpty(department))
-                CachedList.AddRange(emplyees.Where(x => x.Abteilung.Equals(department.Trim())).ToList());
+                CachedList.AddRange(emplyees.Where(x => x.Abteilung.Contains(department.Trim())).ToList());
 
             if (!string.IsNullOrEmpty(name))
-                CachedList.AddRange(emplyees.Where(x => x.Name.Equals(name)).ToList());
+                CachedList.AddRange(emplyees.Where(x => x.Name.Contains(name)).ToList());
 
             if (!string.IsNullOrEmpty(id))
                 CachedList.AddRange(emplyees.Where(x => x.Id.Equals(id)).ToList());

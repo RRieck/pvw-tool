@@ -60,7 +60,7 @@ namespace StartUp.Frontend
                         }
                         ShowSearchResult(employee_list_for_change);
                         Console.WriteLine("Geben sie die Zahl des Mitarbeiters ein den sie bearbeiten moechten");
-                        Tuple<bool,int> to_be_changed_employee_nr = Validate.IntegerValidator(Console.ReadLine());
+                        Tuple<bool, int> to_be_changed_employee_nr = Validate.IntegerValidator(Console.ReadLine());
                         Employee to_be_changed_employee = employee_list_for_change[to_be_changed_employee_nr.Item2];
                         Employee changed_employee = EditEmployeeMenu(to_be_changed_employee);
                         fach.ChangeEmployee(changed_employee.Id, changed_employee.Name, changed_employee.Abteilung);
@@ -193,7 +193,7 @@ namespace StartUp.Frontend
         {
             int count = 1;
             Console.WriteLine("\n");
-            foreach ( Employee employee in employee_list)
+            foreach (Employee employee in employee_list)
             {
                 Console.WriteLine(count + ". ID: " + employee.Id + " | Name: " + employee.Name + " | Abteilung: " + employee.Abteilung);
                 count++;
