@@ -34,9 +34,7 @@ namespace StartUp.Fachkonzepte
                 Abteilung = department
             });
         }
-        // Hier würde ich es auch besser finden wenn wir da ein integer eigentlich überegeben?! weiß nur nicht ob dann wo anders was kaputt geht
-        //  dewegen habe ich es nicht geändert 
-        // -------------Ist es jetzt klar warum es ein string ist (wenn ja einfach comment entfernen :) )?!?-------------------
+
         public void DeleteEmployee(string id)
         {
             data.DeleteEntry(id);

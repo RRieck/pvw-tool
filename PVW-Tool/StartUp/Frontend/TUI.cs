@@ -41,8 +41,23 @@ namespace StartUp.Frontend
                         break;
                     case 2:
                         Console.WriteLine("Welchen Mitarbeiter wollen Sie bearbeiten?");
-                        List<string> search_employee_for_change = SearchEmployeeMenu();
-                        List<Employee> employee_list_for_change = fach.SearchFor(search_employee_for_change[0], search_employee_for_change[1], "id");
+                        Dictionary<string, string> search_employee_for_change = SearchEmployeeMenu();
+                        List<Employee> employee_list_for_change;
+                        if (search_employee_for_change.Count > 1)
+                        {
+                            employee_list_for_change = fach.SearchFor(search_employee_for_change["department"], search_employee_for_change["name"], null);
+                        }
+                        else
+                        {
+                            if (search_employee_for_change.ContainsKey("department"))
+                            {
+                                employee_list_for_change = fach.SearchFor(search_employee_for_change["department"], null, null);
+                            }
+                            else
+                            {
+                                employee_list_for_change = fach.SearchFor(null, search_employee_for_change["name"], null);
+                            }
+                        }
                         ShowSearchResult(employee_list_for_change);
                         Console.WriteLine("Geben sie die Zahl des Mitarbeiters ein den sie bearbeiten moechten");
                         Tuple<bool,int> to_be_changed_employee_nr = Validate.IntegerValidator(Console.ReadLine());
@@ -51,17 +66,31 @@ namespace StartUp.Frontend
                         fach.ChangeEmployee(changed_employee.Id, changed_employee.Name, changed_employee.Abteilung);
                         break;
                     case 3:
-                        List<string> search_employee = SearchEmployeeMenu();
-                        List<Employee> employee_list = fach.SearchFor(search_employee[0], search_employee[1], "id");
+                        Dictionary<string, string> search_employee = SearchEmployeeMenu();
+                        List<Employee> employee_list;
+                        if (search_employee.Count > 1)
+                        {
+                            employee_list = fach.SearchFor(search_employee["department"], search_employee["name"], null);
+                        }
+                        else
+                        {
+                            if (search_employee.ContainsKey("department"))
+                            {
+                                employee_list = fach.SearchFor(search_employee["department"], null, null);
+                            }
+                            else
+                            {
+                                employee_list = fach.SearchFor(null, search_employee["name"], null);
+                            }
+                        }
                         ShowSearchResult(employee_list);
+                        Console.ReadLine();
                         break;
                     case 4:
                         string customer_id = DeleteEmployeeMenu();
                         fach.DeleteEmployee(customer_id);
                         break;
                     case 5:
-                        break;
-                    case 6:
                         turnOff = true;
                         break;
                 }
@@ -77,13 +106,13 @@ namespace StartUp.Frontend
             Console.WriteLine("(2) - Mitarbeiter bearbeiten");
             Console.WriteLine("(3) - Mitarbeiter Suchen");
             Console.WriteLine("(4) - Mitarbeiter Loeschen");
-            Console.WriteLine("(5) - Abteilung Suchen");
-            Console.WriteLine("(6) - Programm beenden\n");
+            Console.WriteLine("(5) - Programm beenden\n");
         }
 
-        private List<string> SearchEmployeeMenu()
+        private Dictionary<string, string> SearchEmployeeMenu()
         {
-            List<string> search_parameters = new List<string>();
+            Dictionary<string, string> search_parameters = new Dictionary<string, string>();
+
 
             Console.WriteLine("Bitte geben sie zunächst den Namen des Mitarbeiters ein.");
             Console.WriteLine("Für Suche mittels Abteilungsname drücken sie Enter ohne Eingabe.");
@@ -91,7 +120,7 @@ namespace StartUp.Frontend
             string name = Console.ReadLine();
             if (name.Length > 0)
             {
-                search_parameters.Add(name);
+                search_parameters.Add("name", name);
             }
 
             Console.WriteLine("Für Suche mittels Abteilungsname drücken sie Enter ohne Eingabe.");
@@ -99,7 +128,7 @@ namespace StartUp.Frontend
             string department = Console.ReadLine();
             if (department.Length > 0)
             {
-                search_parameters.Add(department);
+                search_parameters.Add("department", department);
             }
 
             return search_parameters;
