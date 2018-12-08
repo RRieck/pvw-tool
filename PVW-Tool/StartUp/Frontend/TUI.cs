@@ -113,7 +113,6 @@ namespace StartUp.Frontend
         {
             Dictionary<string, string> search_parameters = new Dictionary<string, string>();
 
-
             Console.WriteLine("Bitte geben sie zunächst den Namen des Mitarbeiters ein.");
             Console.WriteLine("Für Suche mittels Abteilungsname drücken sie Enter ohne Eingabe.");
 
