@@ -13,7 +13,7 @@ namespace StartUp.Fachkonzepte
         public Fachkonzept1()
         {
             data = new XmlParser();
-          //  data = new SqliteDataAccess();
+            //  data = new SqliteDataAccess();
         }
 
         public void ChangeEmployee(string id, string name, string department)
@@ -47,21 +47,18 @@ namespace StartUp.Fachkonzepte
         
         public List<Employee> SearchFor(string department, string name, string id)
         {
-            var resultList = new List<Employee>();
-            var CachedList = new List<Employee>();
-
-            var emplyees = data.GetEmployees();
+            var resultList = data.GetEmployees();
 
             if (!string.IsNullOrEmpty(department))
-                CachedList.AddRange(emplyees.Where(x => x.Abteilung.Contains(department.Trim())).ToList());
+                resultList = resultList.Where(x => x.Abteilung.Contains(department.Trim())).ToList();
 
             if (!string.IsNullOrEmpty(name))
-                CachedList.AddRange(emplyees.Where(x => x.Name.Contains(name)).ToList());
+                resultList = resultList.Where(x => x.Name.Contains(name)).ToList();
 
             if (!string.IsNullOrEmpty(id))
-                CachedList.AddRange(emplyees.Where(x => x.Id.Equals(id)).ToList());
+                resultList = resultList.Where(x => x.Id.Equals(id)).ToList();
 
-            resultList = ListParser.DeleteContainedEntries(CachedList);
+            //resultList = ListParser.DeleteContainedEntries(CachedList); obsoleted
 
             return resultList;
         }
