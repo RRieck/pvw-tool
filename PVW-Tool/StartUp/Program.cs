@@ -1,6 +1,7 @@
 ﻿using StartUp.Frontend.GUI;
 using StartUp.Model;
 using System;
+using System.Linq;
 using System.Security.AccessControl;
 using System.Windows;
 
@@ -18,22 +19,24 @@ namespace StartUp
             //new Application().Run(new GUI());
 
 
-            //new StartUp.Frontend.TUI();
+            new StartUp.Frontend.TUI();
 
             //si könnte es aussehen :)
-            var objOfFk = new Fachkonzepte.Fachkonzept1();
+            //var objOfFk = new Fachkonzepte.Fachkonzept1();
 
-            objOfFk.CreateEmployee("hans uwe","frw");
-            objOfFk.CreateEmployee("hans-thorsten-ernestus damn","entwicklung");
-            objOfFk.CreateEmployee("hme-morlig-ernestus Son","entwicklung");
+            //objOfFk.CreateEmployee("hans uwe","frw");
+            //objOfFk.CreateEmployee("hans-thorsten-ernestus damn","entwicklung");
+            //objOfFk.CreateEmployee("hme-morlig-ernestus Son","entwicklung");
 
-            Console.WriteLine("Welchen Mitarbeiter suchen sie? Eingabe lautet wie folgt: [Abteilung;Name]. (Es muss nicht jedes Feld angegeben werden) Bspw. ;maxmustermann");
-            var input = "frw;hans"; //zum Testen -- ansonsten ein console.readline()                 
-            var parameters = input.Split(new char []{ ';'},StringSplitOptions.None);
+            //Console.WriteLine("Welchen Mitarbeiter suchen sie? Eingabe lautet wie folgt: [Abteilung;Name]. (Es muss nicht jedes Feld angegeben werden) Bspw. ;maxmustermann");
+            //var input = "frw;hans"; //zum Testen -- ansonsten ein console.readline()                 
+            //var parameters = input.Split(new char []{ ';'},StringSplitOptions.None);
 
 
             //should return 1
-            var matchedEmployees = objOfFk.SearchFor(parameters[0],parameters[1],null);
+            //var matchedEmployees = objOfFk.SearchFor("entwicklung", null, null);
+            //Console.WriteLine(matchedEmployees.First().Name);
+            //Console.ReadLine();
         }
     }
 }

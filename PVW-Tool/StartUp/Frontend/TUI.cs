@@ -78,9 +78,13 @@ namespace StartUp.Frontend
                             {
                                 employee_list = fach.SearchFor(search_employee["department"], null, null);
                             }
-                            else
+                            else if (search_employee.ContainsKey("name"))
                             {
                                 employee_list = fach.SearchFor(null, search_employee["name"], null);
+                            }
+                            else
+                            {
+                                employee_list = fach.SearchFor(null, null, null);
                             }
                         }
                         ShowSearchResult(employee_list);
