@@ -1,6 +1,8 @@
-﻿using StartUp.Model;
+﻿using StartUp.Frontend.GUI;
+using StartUp.Model;
 using System;
 using System.Security.AccessControl;
+using System.Windows;
 
 namespace StartUp
 {
@@ -14,8 +16,8 @@ namespace StartUp
 
             //Open GUI Here
             //new Application().Run(new GUI());
-            
-            
+
+
             //new StartUp.Frontend.TUI();
 
             //si könnte es aussehen :)

@@ -28,8 +28,8 @@
             <TextBox Grid.Row="1" Grid.Column="1" Height="30" Width="264"></TextBox>
             <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Abteilung:</Label>
             <ComboBox Grid.Row="2" Grid.Column="1" x:Name="penis" Height="30" Width="264"></ComboBox>
-            <Button Grid.Row="3" Grid.Column="1" Click="Button_Click" Height="30" Width="85" HorizontalAlignment="Right">Hinzufuegen</Button>
-            <Button Grid.Row="3" Grid.Column="1" Click="Button_Click" Height="30" Width="85" HorizontalAlignment="Left">Bearbeiten</Button>
+            <Button Grid.Row="3" Grid.Column="1" Click="AddEmployee" Height="30" Width="85" HorizontalAlignment="Right">Hinzufuegen</Button>
+            <Button Grid.Row="3" Grid.Column="1" Click="ChangeEmployee" Height="30" Width="85" HorizontalAlignment="Left">Bearbeiten</Button>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>

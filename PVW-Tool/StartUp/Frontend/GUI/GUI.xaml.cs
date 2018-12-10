@@ -29,5 +29,15 @@ namespace StartUp.Frontend.GUI
         {
 
         }
+
+        private void AddEmployee(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("AddEmployee");
+        }
+
+        private void ChangeEmployee(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("ChangeEmployee");
+        }
     }
 }
