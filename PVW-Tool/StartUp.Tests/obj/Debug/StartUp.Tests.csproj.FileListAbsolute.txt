@@ -55,3 +55,8 @@ E:\pvw-tool-master\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.VisualStudio.TestP
 E:\pvw-tool-master\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 E:\pvw-tool-master\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.Data.Sqlite.xml
 E:\pvw-tool-master\PVW-Tool\StartUp.Tests\bin\Debug\Dapper.xml
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\Edit.png
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\expandArrow.png
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\icon.ico
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\Ordner.png
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\platypus.png

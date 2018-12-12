@@ -6,14 +6,15 @@ using StartUp.Model;
 
 namespace StartUp.Fachkonzepte
 {
-    class Fachkonzept1 : IFachkonzept
+    public  class Fachkonzept1 : IFachkonzept
     {
-        XmlParser data;
-        //SqliteDataAccess data;
+        //XmlParser data;
+        SqliteDataAccess data;
+
         public Fachkonzept1()
         {
-            data = new XmlParser();
-            //  data = new SqliteDataAccess();
+            //data = new XmlParser();
+            data = new SqliteDataAccess();
         }
 
         public void ChangeEmployee(string id, string name, string department)

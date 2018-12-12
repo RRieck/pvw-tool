@@ -7,10 +7,6 @@ Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.g.resources
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.csproj.CoreCompileInputs.cache
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.exe
 Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.pdb
-Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\GUI.g.cs
-Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\UserChanged.g.cs
-Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\GUI.baml
-Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\UserChanged.baml
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Microsoft.Win32.Primitives.dll
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\netstandard.dll
@@ -622,3 +618,5 @@ Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\Ordner.png
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\icon.ico
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\Edit.png
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\expandArrow.png
+Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\speakbubble.png
+Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\searchLogo.png

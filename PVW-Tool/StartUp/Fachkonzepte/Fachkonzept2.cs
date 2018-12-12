@@ -9,7 +9,7 @@ using StartUp.Model;
 
 namespace StartUp.Fachkonzepte
 {
-    class Fachkonzept2 : IFachkonzept
+    public class Fachkonzept2 : IFachkonzept
     {
         XmlParser data;
         //SqliteDataAccess data;

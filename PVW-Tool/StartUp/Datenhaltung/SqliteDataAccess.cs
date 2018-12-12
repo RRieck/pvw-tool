@@ -9,7 +9,8 @@ using Dapper;
 using Microsoft.Data.Sqlite;
 using StartUp.Datenhaltung.DoNotTouchThis.ISaidDoNot;
 using StartUp.Infrastructure.Extensions;
-using StartUp.Model;
+using StartUp.Model.SqLiteModels;
+using Employee = StartUp.Model.Employee;
 
 namespace StartUp.Datenhaltung
 {
@@ -18,6 +19,30 @@ namespace StartUp.Datenhaltung
         public SqliteDataAccess()
         {
                SQLitePCL.Batteries.Init();
+               Init();
+        }
+
+        void Init()
+        {
+            using (IDbConnection con = new SqliteConnection(ReceiveConnectionString()))
+            {
+                var departments = new List<string>(){"Personalabteilung","Entwickler","Netzwerk","Managment"};
+                for (int i = 1; i < 5; i++)
+                {
+                    con.Execute("Insert into Department (department_id, name) values (@department_id, @name)", new Model.SqLiteModels.Department(){
+                        department_id = i.ToString(),
+                        name = departments[i - 1]
+                    });
+                }
+            }
+        }
+
+        List<Department> GetDepartments()
+        {
+            using (IDbConnection con = new SqliteConnection(ReceiveConnectionString()))
+            {
+                return con.Query<Model.SqLiteModels.Department>("select department_id, name from Department",new DynamicParameters()).ToList();
+            }
         }
 
         public List<Employee> GetEmployees()
@@ -43,20 +68,15 @@ namespace StartUp.Datenhaltung
 
         public void WriteNewEntry(Employee employee)
         {
+            var departments = GetDepartments();
+
             using (IDbConnection con = new SqliteConnection(ReceiveConnectionString()))
             {
-                var departmentID  = "A_" + IdCreator.Generate();
-
                 con.Execute("Insert into Employee (employee_nr, firstname, lastname, department_id) values (@employee_nr, @firstname, @lastname, @department_id)", new Model.SqLiteModels.Employee(){
                     employee_nr = IdCreator.Generate().ToString(),
                     firstname = NameParser.ReceivePreAndLastname(employee.Name).First(),
                     lastname = NameParser.ReceivePreAndLastname(employee.Name).Last(),
-                    department_id = departmentID
-                });
-
-                con.Execute("Insert into Department (department_id, name) values (@department_id, @name)", new Model.SqLiteModels.Department(){
-                    department_id = departmentID,
-                    name = employee.Abteilung
+                    department_id = departments.Where(x => x.name.Equals(employee.Abteilung)).Select(x => x.department_id).First()
                 });
             }
         }

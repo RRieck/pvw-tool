@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StartUp.Frontend.GUI"
              mc:Ignorable="d" 
-             d:DesignHeight="750" d:DesignWidth="1200"  ResizeMode="NoResize" Title="PVW-Tool" Icon="../../Ress/icon.ico">
+             d:DesignHeight="768" d:DesignWidth="1200" Width="1280" Height="750"   ResizeMode="NoResize" Title="PVW-Tool" Icon="../../Ress/icon.ico">
     <Window.Resources>
         <Storyboard x:Key="SbShowLeftMenu" >
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-250,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
@@ -21,18 +21,17 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Name="border" 
-                                BorderThickness="1,1,3,3"
+                                BorderThickness="1,1,1,1"
                                 Padding="0" 
-                                BorderBrush="#bdbdbd" 
+                                BorderBrush="#404040" 
                                 CornerRadius="0" 
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="#bdbdbd"/>
                                 <Setter Property="Background" Value="Transparent"/>
-                                <Setter TargetName="border" Property="BorderThickness" Value="3,3,1,1"/>
                                 <Setter Property="Effect">
                                     <Setter.Value>
                                         <DropShadowEffect 
@@ -55,26 +54,35 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Background="#c7fdff"  ShowGridLines="False">
+        <Grid Grid.Column="1" Background="#f0feff"  ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Personal-Verwaltungs-System"/>
-            <Label  Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Top" Content="Name:" Margin="0,125,270,0" FontSize="18"/>
-            <TextBox Grid.Column="0" Height="30" Width="200"  VerticalAlignment="Top" Margin="50,130,0,0" Padding="5"/>
-            <Label Grid.Column="0"  HorizontalAlignment="Center"   VerticalAlignment="Top" Content="Abteilung:" Margin="0,175,240,0" FontSize="18"/>
-            <ComboBox Grid.Column="0" x:Name="CbDepartment" Height="30" Width="200"  VerticalAlignment="Top" Margin="50,180,0,0" Padding="5"/>
-            <Button x:Name="BtnAddUser" Grid.Column="0" Click="BtnAddUser_OnClick" Height="30" Width="85" HorizontalAlignment="Center" Content="Hinzufügen" Style="{StaticResource BaseBtnStyle}" Margin="0,0,0,150"/>
-            <Image Grid.Column="0" Height="300" Width="300" Source="../../Ress/Platypus.png" VerticalAlignment="Bottom" Margin="20,0,0,0"/>
-            <!--RightSide of Grid-->     
-            <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top ">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="452*"/>
+                <RowDefinition Height="161*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="0" Grid.RowSpan="3">
+                <Label Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Personal-Verwaltungs-System"/>
+                <Label  Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Top" Content="Name:" Margin="0,130,270,0" FontSize="14"/>
+                <TextBox x:Name="TbNewUser" Grid.Column="0" Height="30" Width="200"  VerticalAlignment="Top" Margin="50,130,0,0" Padding="5" ToolTip="Zweit Vor-/Nachname mit einem - seperieren"/>
+                <Label Grid.Column="0"  HorizontalAlignment="Center"   VerticalAlignment="Top" Content="Abteilung:" Margin="0,195,240,0" FontSize="14"/>
+                <ComboBox Grid.Column="0" x:Name="CbDepartment" Height="30" Width="200"  VerticalAlignment="Top" Margin="50,195,0,0" Padding="5"/>
+                <Button x:Name="BtnAddUser" Grid.Column="0"  Click="BtnAddUser_OnClick" Height="30" Width="85" HorizontalAlignment="Center" Content="Hinzufügen" Style="{StaticResource BaseBtnStyle}" Margin="0,0,0,150"/>
+                <Image Grid.Column="0" Height="300" Width="300" Source="../../Ress/Platypus.png" VerticalAlignment="Bottom" Margin="20,0,0,0"/>
+            </Grid>
+            <!--RightSide of Grid-->
+            <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top " ShowGridLines="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="BtnShowAllEmployees" Grid.Column="0" Height="30"  Width="150"  Margin="0,75,320,0" Content="Alle Mitarbeiter" VerticalAlignment="Top" Style="{StaticResource BaseBtnStyle}"/>
-                <Border Grid.Column="1" Margin="0,5,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="1" BorderBrush="Gray" Padding="0,0,5,0">
+                <Button x:Name="BtnShowAllEmployees" Grid.Column="0" Height="30"  Width="110"  Margin="0,75,0,0" Content="Alle Mitarbeiter" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource BaseBtnStyle}" Click="BtnShowAllEmployees_OnClick"/>
+                <Button x:Name="BtnDeletelEmployee" Grid.Column="0" Height="30"  Width="110"  Margin="00,40,0,0" Content="Mitarbeiter löschen" VerticalAlignment="Top" Style="{StaticResource BaseBtnStyle}" Click="BtnDeletelEmployee_OnClick" HorizontalAlignment="Left"/>
+                <Border Grid.Column="2" Margin="0,5,10,0" Background="#696969" HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="1" BorderBrush="Gray" Padding="0,0,5,0">
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -86,20 +94,49 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center"  Content="Suche"/>
-                        <Label Grid.Column="0" Grid.Row="1" Height="30" Margin="0,0,0,5"  FontSize="18"  Content="Mitarbeiter:" />
-                        <TextBox Grid.Column="1" Grid.Row="1" Height="30" Width="150" Margin="0,0,0,0" Padding="5"/>
-                        <Label Grid.Column="0" Grid.Row="2" Height="35" Margin="0,0,0,5"  FontSize="18"  Content="Abteilung:" />
-                        <TextBox Grid.Column="1" Grid.Row="2"  Height="30" Width="150" Margin="0,0,0,0" Padding="5"/>
-                        <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Height="30" Width="50" Margin="20,0,0,0" Content="Suche" Style="{StaticResource BaseBtnStyle}"/>
+                        <Label Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center"  Content="Suche" Foreground="White"/>
+                        <Label Grid.Column="0" Grid.Row="1" Height="30" Margin="0,0,0,5"  FontSize="14"  Content="Mitarbeiter:" Foreground="White" />
+                        <TextBox x:Name="TbSearchUser" Grid.Column="1" Grid.Row="1" Height="30" Width="130" Margin="0,0,0,5" Padding="5"  Background="Transparent"  Foreground="White"/>
+                        <Label Grid.Column="0" Grid.Row="2" Height="35" Margin="0,0,0,5"  FontSize="14"  Content="Abteilung:"  Foreground="White"/>
+                        <TextBox x:Name="TbSearchDepartment" Grid.Column="1" Grid.Row="2"  Height="30" Width="130" Margin="0,0,0,10" Padding="5" Background="Transparent"  Foreground="White"/>
+                        <Image Grid.Column="2" Grid.RowSpan="2" Width="35" Height="35" Source="../../Ress/searchLogo.png" Margin="0,0,0,10"/>
+                        <Button x:Name="BtnSearch" Grid.Column="2" Grid.Row="1" Height="30" Width="50" Margin="5,25,5,20" Content="Suche" Style="{StaticResource BaseBtnStyle}"  Click="BtnSearch_OnClick" Grid.RowSpan="2" Foreground="White" BorderBrush="White"/>
                     </Grid>
                 </Border>
             </Grid>
-            <DataGrid Grid.Column="1" Width="800" Height="595" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
+            <DataGrid x:Name="DgContent" 
+                      Grid.Column="1" 
+                      Grid.Row="1"
+                      VerticalAlignment="Stretch" 
+                      Margin="0,10,10,10" 
+                      ColumnWidth="*"
+                      AlternationCount="2"
+                      AlternatingRowBackground="#97e2e1"
+                      IsReadOnly="True"
+                      HorizontalContentAlignment="Center"
+                      VerticalContentAlignment="Center" 
+                      RowHeight="30"
+                      MouseDown="DgContent_OnMouseDown" Grid.RowSpan="2">
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="Black"></Setter>
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
         </Grid>
-        <!--UserChangedView--> 
+        <!--UserChangedView-->
         <StackPanel Grid.Column="0"  Name="PnlLeftMenu"  Height="720" HorizontalAlignment="Left" Margin="-250,0,0,0" VerticalAlignment="Top" Orientation="Horizontal">
-            <Border BorderBrush="Black" BorderThickness="1" Width="250" Background="#4f4f4f" Panel.ZIndex="2">
+            <Border BorderBrush="Black" BorderThickness="1" Width="250" Background="#4f4f4f" Panel.ZIndex="2" UseLayoutRounding="True">
                 <Grid Margin="5,80,5,0" HorizontalAlignment="Center" ShowGridLines="False">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -116,28 +153,29 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Border BorderThickness="3" BorderBrush="Black" CornerRadius="50" Height="46" Width="46" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Border BorderThickness="2" BorderBrush="Black" CornerRadius="50" Height="44" Width="44" HorizontalAlignment="Left" VerticalAlignment="Top"  UseLayoutRounding="True">
                         <Image Grid.Row="0" Width="40" Height="40"  Source="../../Ress/Edit.png" HorizontalAlignment="Left" VerticalAlignment="Top" />
                     </Border>
                     <Label Grid.Row="0" Margin="50,0,0,0" Content="Person bearbeiten" FontSize="22" Foreground="White" HorizontalAlignment="Center"/>
                     <Label Grid.Row="2" Height="28" Margin="0,0,0,0"  FontSize="12" Foreground="White"  Content="ID:"  HorizontalAlignment="Center"/>
-                    <TextBox Grid.Row="3" Height="30" Width="150" Margin="0,0,0,40" IsHitTestVisible="False" Padding="5" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="TbUserID" Grid.Row="3" Height="30" Width="220" Margin="0,0,0,40" IsHitTestVisible="False" Padding="5" HorizontalAlignment="Center" FontSize="10"/>
                     <Label Grid.Row="4" Height="28" Margin="0,0,0,0"  FontSize="12" Foreground="White"  Content="Mitarbeiter:" HorizontalAlignment="Center" />
-                    <TextBox Grid.Row="5" Height="30" Width="150" Margin="0,0,0,40"  Padding="5" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="TbChangedUser" Grid.Row="5" Height="30" Width="220" Margin="0,0,0,40"  Padding="5" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
                     <Label Grid.Row="6" Height="28" Margin="0,0,0,0"  FontSize="12" Foreground="White" Content="Abteilung:"  HorizontalAlignment="Center"/>
-                    <TextBox Grid.Row="7"  Height="30" Width="150" Margin="0,0,0,0"  Padding="5" HorizontalAlignment="Center"/>
-                    <Button Grid.Row="9" Grid.Column="0" Height="30" Background="Transparent" Foreground="White" Content="Änderungen speichern" FontSize="16" Style="{StaticResource BaseBtnStyle}"/>
+
+                    <ComboBox Grid.Row="7" x:Name="CbChangedDepartment" Height="30" Width="220"  VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Padding="5"/>
+                    <Button  x:Name="BtnSaveChangedUser"  Grid.Row="9" Grid.Column="0" Height="30" Background="Transparent" Foreground="White" Content="Änderungen speichern" FontSize="16" Style="{StaticResource BaseBtnStyle}" Click="BtnSaveChangedUser_OnClick"/>
                 </Grid>
             </Border>
             <Grid Panel.ZIndex="2">
-                <Button Name="BtnLeftMenuHide" Width="30" BorderBrush="Gray" Background="Transparent" Height="720" Click="btnLeftMenuHide_Click" Visibility="Hidden"  >
+                <Button Name="BtnLeftMenuHide" Width="30" BorderBrush="Gray" Background="#696969" Height="720" Click="BtnLeftMenuHide_Click" Visibility="Hidden"  >
                     <Image Source="../../Ress/expandArrow.png"   VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Image.RenderTransform>
                             <RotateTransform Angle="90" CenterX="25"/>
                         </Image.RenderTransform>
                     </Image>
                 </Button>
-                <Button Name="BtnLeftMenuShow" Width="30" BorderBrush="Gray" Background="Transparent" Height="720" Click="btnLeftMenuShow_Click">
+                <Button Name="BtnLeftMenuShow" Width="30" BorderBrush="Gray" Background="#696969" Height="720" Click="BtnLeftMenuShow_Click">
                     <Image Source="../../Ress/expandArrow.png" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Image.RenderTransform>
                             <RotateTransform Angle="270"/>
@@ -146,6 +184,6 @@
                 </Button>
             </Grid>
         </StackPanel>
-        
+
     </Grid>
 </Window>

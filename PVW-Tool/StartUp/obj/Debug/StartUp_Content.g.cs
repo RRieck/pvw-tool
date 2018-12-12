@@ -13,6 +13,9 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ress/icon.ico")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ress/ordner.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ress/platypus.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ress/searchlogo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ress/speakbubble.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ress/speechbubble.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("e_sqlite3.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("e_sqlite3.dll")]
 
