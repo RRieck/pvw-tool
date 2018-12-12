@@ -11,17 +11,17 @@ namespace StartUp.Fachkonzepte
 {
     public class Fachkonzept2 : IFachkonzept
     {
-        XmlParser data;
+        readonly XmlParser _data;
         //SqliteDataAccess data;
         public Fachkonzept2()
         {
-            data = new XmlParser();
+            _data = new XmlParser();
             //  data = new SqliteDataAccess();
         }
 
         public void ChangeEmployee(string id, string name, string department)
         {
-            data.ChangeExistingEntry(new Employee()
+            _data.ChangeExistingEntry(new Employee()
             {
                 Id = id,
                 Name = name,
@@ -31,7 +31,7 @@ namespace StartUp.Fachkonzepte
 
         public void CreateEmployee(string name, string department)
         {
-            data.WriteNewEntry(new Employee()
+            _data.WriteNewEntry(new Employee()
             {
                 Name = name,
                 Abteilung = department
@@ -40,17 +40,17 @@ namespace StartUp.Fachkonzepte
 
         public void DeleteEmployee(string id)
         {
-            data.DeleteEntry(id);
+            _data.DeleteEntry(id);
         }
 
         public List<Employee> GetEmployees()
         {
-            return data.GetEmployees().OrderBy( x => x.Name).ToList();
+            return _data.GetEmployees().OrderBy( x => x.Name).ToList();
         }
         
         public List<Employee> SearchFor(string department, string name, string id)
         {
-            var resultList = data.GetEmployees();
+            var resultList = _data.GetEmployees();
 
             if (!string.IsNullOrEmpty(department))
                 resultList = resultList.Where(x => x.Abteilung.Contains(department.Trim())).ToList();
@@ -60,8 +60,6 @@ namespace StartUp.Fachkonzepte
 
             if (!string.IsNullOrEmpty(id))
                 resultList = resultList.Where(x => x.Id.Equals(id)).ToList();
-
-            //resultList = ListParser.DeleteContainedEntries(CachedList); obsoleted
 
             return resultList.OrderBy(x => x.Name).ToList();
         }

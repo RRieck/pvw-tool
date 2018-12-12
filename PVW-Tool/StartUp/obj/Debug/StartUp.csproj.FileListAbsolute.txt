@@ -611,12 +611,11 @@ J:\RdmApps\Projects\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\UserChanged
 J:\RdmApps\Projects\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.g.resources
 J:\RdmApps\Projects\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.csproj.CoreCompileInputs.cache
 J:\RdmApps\Projects\pvw-tool\PVW-Tool\StartUp\obj\Debug\StartUp.csproj.CopyComplete
-Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\Staging.g.cs
-Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\Staging.baml
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\platypus.png
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\Ordner.png
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\icon.ico
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\Edit.png
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\expandArrow.png
-Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\speakbubble.png
 Z:\pvw-tool\PVW-Tool\StartUp\bin\Debug\Ress\searchLogo.png
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\GUI.g.cs
+Z:\pvw-tool\PVW-Tool\StartUp\obj\Debug\Frontend\GUI\GUI.baml

@@ -1,6 +1,3 @@
-Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
-Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
-Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\StartUp.Tests.dll
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\StartUp.Tests.pdb
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
@@ -60,3 +57,4 @@ Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\expandArrow.png
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\icon.ico
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\Ordner.png
 Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\platypus.png
+Z:\pvw-tool\PVW-Tool\StartUp.Tests\bin\Debug\Ress\searchLogo.png

@@ -14,7 +14,7 @@ namespace StartUp.Frontend
             Menu(fach);
         }
 
-        private void Menu(Fachkonzepte.Fachkonzept1 fach)
+        void Menu(Fachkonzepte.Fachkonzept1 fach)
         {
             bool turnOff;
             do
@@ -100,7 +100,7 @@ namespace StartUp.Frontend
                 }
             } while (!turnOff);
         }
-        private void InitializeMenu()
+        void InitializeMenu()
         {
             Console.Clear();
             Console.WriteLine("Personal-Verwaltungs-System");
@@ -113,7 +113,7 @@ namespace StartUp.Frontend
             Console.WriteLine("(5) - Programm beenden\n");
         }
 
-        private Dictionary<string, string> SearchEmployeeMenu()
+        Dictionary<string, string> SearchEmployeeMenu()
         {
             Dictionary<string, string> search_parameters = new Dictionary<string, string>();
 
@@ -137,7 +137,7 @@ namespace StartUp.Frontend
             return search_parameters;
         }
 
-        private Employee EditEmployeeMenu(Employee to_be_changed)
+        Employee EditEmployeeMenu(Employee to_be_changed)
         {
             Console.WriteLine("Diese Eingabe dient zur Namensaenderung. Enter um zur Abteilungsaenderung zu kommen");
             string name = Console.ReadLine();
@@ -158,7 +158,7 @@ namespace StartUp.Frontend
             return to_be_changed;
         }
 
-        private string DeleteEmployeeMenu()
+        string DeleteEmployeeMenu()
         {
             Console.WriteLine("Bitte geben Sie die ID des Mitarbeiters der gelöscht werden soll ein.");
             string customer_id = Console.ReadLine();
@@ -166,7 +166,7 @@ namespace StartUp.Frontend
         }
 
 
-        private Tuple<string, string> AddEmployeeMenu()
+        Tuple<string, string> AddEmployeeMenu()
         {
             Console.Clear();
 
@@ -192,7 +192,7 @@ namespace StartUp.Frontend
             return new Tuple<string, string>(name, IDConverter.DepartmentIdConverter(validatedInput.Item2));
         }
 
-        private void ShowSearchResult(List<Employee> employee_list)
+        void ShowSearchResult(List<Employee> employee_list)
         {
             int count = 1;
             Console.WriteLine("\n");

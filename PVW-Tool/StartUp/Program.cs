@@ -12,10 +12,11 @@ namespace StartUp
         [STAThread]
         static void Main(string[] args)
         {
-            new Application().Run(new Staging());
+            new Frontend.TUI();
+            new Application().Run(new GUI());
 
 
-            //new StartUp.Frontend.TUI();
+            
 
             //si könnte es aussehen :)
             //var objOfFk = new Fachkonzepte.Fachkonzept1();
